@@ -1,0 +1,6 @@
+customhost = "humanresource.clidrd34hqzi.us-east-1.rds.amazonaws.com"
+customuser = "userID"
+custompass = "User112233"
+customdb = "HumanResource"
+custombucket = "tayannyi-bucket"
+customregion = "us-east-1"
