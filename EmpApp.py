@@ -48,7 +48,7 @@ def deleteEmp():
     return render_template('DeleteEmp.html')
 
 
-@app.route("/addemp", methods=['POST'])
+@app.route("/addEmp", methods=['POST'])
 def AddEmp():
     emp_id = request.form['emp_id']
     first_name = request.form['first_name']
@@ -60,7 +60,7 @@ def AddEmp():
     location = request.form['location']
     emp_image_file = request.files['emp_image_file']
 
-    insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s)"
+    insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s,%s,%s,%s)"
     cursor = db_conn.cursor()
 
     if emp_image_file.filename == "":
