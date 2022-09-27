@@ -79,7 +79,7 @@ def EditEmp():
 
     return render_template('EmpPanel.html')
 
-@app.route("/retrieveEmp",methods=['POST','GET'])
+@app.route("/retrieveEditEmp",methods=['POST','GET'])
 def RetrieveEmp():
     searchbox = request.form.get("emp_id")
     cursor = db_conn.cursor()
@@ -118,6 +118,88 @@ def RetrieveEmp():
 
 
     return render_template('EditEmp.html',first_name = first_name, last_name = last_name,pri_skill = pri_skill
+    ,location = location, email = email,salary = salary,emp_id = searchbox)
+
+@app.route("/retrieveDeleteEmp",methods=['POST','GET'])
+def RetrieveEmp():
+    searchbox = request.form.get("emp_id")
+    cursor = db_conn.cursor()
+
+    query = "SELECT first_name FROM employee WHERE emp_id = '{}'".format(searchbox)
+    cursor.execute(query)
+    first_name = cursor.fetchone()
+    first_name = ''.join(first_name)
+
+    query2 = "SELECT last_name FROM employee WHERE emp_id = '{}'".format(searchbox)
+    cursor.execute(query2)
+    last_name = cursor.fetchone()
+    last_name = ''.join(last_name)
+
+    query3 = "SELECT pri_skill FROM employee WHERE emp_id = '{}'".format(searchbox)
+    cursor.execute(query3)
+    pri_skill = cursor.fetchone()
+    pri_skill = ''.join(pri_skill)
+
+
+    query4 = "SELECT location FROM employee WHERE emp_id = '{}'".format(searchbox)
+    cursor.execute(query4)
+    location = cursor.fetchone()
+    location = ''.join(location)
+
+    query5 = "SELECT email FROM employee WHERE emp_id = '{}'".format(searchbox)
+    cursor.execute(query5)
+    email = cursor.fetchone()
+    email = ''.join(email)
+
+
+    query6 = "SELECT salary FROM employee WHERE emp_id = '{}'".format(searchbox)
+    cursor.execute(query6)
+    salary = cursor.fetchone()
+    salary = ''.join(salary)
+
+
+    return render_template('DeleteEmp.html',first_name = first_name, last_name = last_name,pri_skill = pri_skill
+    ,location = location, email = email,salary = salary,emp_id = searchbox)
+
+@app.route("/retrieveSearchEmp",methods=['POST','GET'])
+def RetrieveEmp():
+    searchbox = request.form.get("emp_id")
+    cursor = db_conn.cursor()
+
+    query = "SELECT first_name FROM employee WHERE emp_id = '{}'".format(searchbox)
+    cursor.execute(query)
+    first_name = cursor.fetchone()
+    first_name = ''.join(first_name)
+
+    query2 = "SELECT last_name FROM employee WHERE emp_id = '{}'".format(searchbox)
+    cursor.execute(query2)
+    last_name = cursor.fetchone()
+    last_name = ''.join(last_name)
+
+    query3 = "SELECT pri_skill FROM employee WHERE emp_id = '{}'".format(searchbox)
+    cursor.execute(query3)
+    pri_skill = cursor.fetchone()
+    pri_skill = ''.join(pri_skill)
+
+
+    query4 = "SELECT location FROM employee WHERE emp_id = '{}'".format(searchbox)
+    cursor.execute(query4)
+    location = cursor.fetchone()
+    location = ''.join(location)
+
+    query5 = "SELECT email FROM employee WHERE emp_id = '{}'".format(searchbox)
+    cursor.execute(query5)
+    email = cursor.fetchone()
+    email = ''.join(email)
+
+
+    query6 = "SELECT salary FROM employee WHERE emp_id = '{}'".format(searchbox)
+    cursor.execute(query6)
+    salary = cursor.fetchone()
+    salary = ''.join(salary)
+
+
+    return render_template('SearchEmp.html',first_name = first_name, last_name = last_name,pri_skill = pri_skill
     ,location = location, email = email,salary = salary,emp_id = searchbox)
 
 @app.route("/addEmp", methods=['POST'])
