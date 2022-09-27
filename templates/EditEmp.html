@@ -93,8 +93,6 @@
 </html>
 
 <script>
-  $(document).ready(function(){
-    $("#Data").on("div",function(e){
       $.ajax({
         method:"post",
         url:"/retrieveEmp",
@@ -118,12 +116,10 @@
         salary.value = value[6]
         password.value = value[7]
         res_password.value = value[8]
-        ig.value = value[9]
+        img.value = value[9]
       });
       }
       });
-    });
-  });
 </script>
 
 <style>
