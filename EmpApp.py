@@ -43,6 +43,10 @@ def addEmpdata():
 def editEmp():
     return render_template('EditEmp.html')
 
+@app.route("/cancelButton", methods=['GET', 'POST'])
+def back():
+    return render_template('EmpPanel.html')
+
 @app.route("/deleteemp", methods=['GET', 'POST'])
 def deleteEmp():
     return render_template('DeleteEmp.html')
@@ -53,12 +57,27 @@ def RemoveEmp():
 
 @app.route("/editEmp",methods=['POST'])
 def EditEmp():
+    f_name = request.form.get("first_name")
+    last_name = request.form.get("last_name")
+    pri_skill = request.form.get("pri_skill")
+    location = request.form.get("location")
+    email = request.form.get("email")
+    salary = request.form.get("salary")
+    emp_id = request.form.get("emp_id")
+
+    update_sql = "Update employee Set first_name = %s, last_name = %s, pri_skill = %s, location = %s,email = %s,salary = %s where emp_id = %s"
+    cursor = db_conn.cursor()
+
+    cursor.execute(update_sql, (f_name, last_name, pri_skill, location, email ,salary,emp_id))
+    db_conn.commit()
+
     return
 
 @app.route("/retrieveEmp",methods=['POST','GET'])
 def RetrieveEmp():
     searchbox = request.form.get("emp_id")
     cursor = db_conn.cursor()
+
     query = "SELECT first_name FROM employee WHERE emp_id = '{}'".format(searchbox)
     cursor.execute(query)
     first_name = cursor.fetchone()
@@ -93,7 +112,7 @@ def RetrieveEmp():
 
 
     return render_template('EditEmp.html',first_name = first_name, last_name = last_name,pri_skill = pri_skill
-    ,location = location, email = email,salary = salary)
+    ,location = location, email = email,salary = salary,emp_id = searchbox)
 
 @app.route("/addEmp", methods=['POST'])
 def AddEmp():
