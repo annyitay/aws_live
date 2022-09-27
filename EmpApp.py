@@ -121,7 +121,7 @@ def RetrieveEmp():
     ,location = location, email = email,salary = salary,emp_id = searchbox)
 
 @app.route("/retrieveDeleteEmp",methods=['POST','GET'])
-def RetrieveEmp():
+def DeleteEmp():
     searchbox = request.form.get("emp_id")
     cursor = db_conn.cursor()
 
@@ -162,7 +162,7 @@ def RetrieveEmp():
     ,location = location, email = email,salary = salary,emp_id = searchbox)
 
 @app.route("/retrieveSearchEmp",methods=['POST','GET'])
-def RetrieveEmp():
+def SearchEmp():
     searchbox = request.form.get("emp_id")
     cursor = db_conn.cursor()
 
