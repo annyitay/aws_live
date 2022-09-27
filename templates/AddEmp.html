@@ -21,9 +21,7 @@
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title">Add New Employee</h2>
-                                <input type=file name="emp_image_file">
-                                <input type=file name="emp_image_file">
-                                <form method="POST" action="/addEmp" class="register-form" id="register-form"  >
+                        <form enctype="multipart/form-data" method="POST" action="/addEmp" class="register-form" id="register-form">
                             <div class="form-group">
                                 <label for="employeeid"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input type="text" name="emp_id" placeholder="Employee ID"/>
