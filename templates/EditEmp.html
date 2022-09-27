@@ -92,40 +92,6 @@
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>
 
-<script>
-  $(document).ready(function(){
-    $("#emp_id").on("input",function(e){
-      $.ajax({
-        method:"post",
-        url:"/retrieveEmp",
-        data:{text:$("#emp_id").val()},
-        success:function(res){
-          $.each(res,function(searchEmp,value){
-        var first_name = document.querySelector("#first_name")
-        var last_Name = document.querySelector("#last_name")
-        var email = document.querySelector("#email")
-		    var location = document.querySelector("#location")
-		    var pri_skill = document.querySelector("#pri_skill")
-		    var salary = document.querySelector("#salary")
-		    var password = document.querySelector("#pass")
-		    var res_password = document.querySelector("#res_pass")
-        var img = document.querySelector("#emp_image_file")
-        first_name.value = value[1]
-        last_name.value = value[2]
-        email.value = value[3]
-        location.value = value[4]
-        pri_skill.value = value[5]
-        salary.value = value[6]
-        password.value = value[7]
-        res_password.value = value[8]
-        img.value = value[9]
-      });
-      }
-      });
-    });
-  });
-</script>
-
 <style>
 /* @extend display-flex; */
 display-flex, .display-flex, .display-flex-center, .signup-content, .signin-content, .social-login, .socials {
