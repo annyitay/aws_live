@@ -61,27 +61,27 @@ def RetrieveEmp():
     cursor = db_conn.cursor()
     query = "SELECT first_name FROM employee WHERE emp_id = '{}'".format(searchbox)
     cursor.execute(query)
-    first_name = cursor.fetchall()
+    first_name = cursor.fetchone()
 
     query2 = "SELECT last_name FROM employee WHERE emp_id = '{}'".format(searchbox)
     cursor.execute(query2)
-    last_name = cursor.fetchall()
+    last_name = cursor.fetchone()
 
     query3 = "SELECT pri_skill FROM employee WHERE emp_id = '{}'".format(searchbox)
     cursor.execute(query3)
-    pri_skill = cursor.fetchall()
+    pri_skill = cursor.fetchone()
 
     query4 = "SELECT location FROM employee WHERE emp_id = '{}'".format(searchbox)
     cursor.execute(query4)
-    location = cursor.fetchall()
+    location = cursor.fetchone()
 
     query5 = "SELECT email FROM employee WHERE emp_id = '{}'".format(searchbox)
     cursor.execute(query5)
-    email = cursor.fetchall()
+    email = cursor.fetchone()
 
     query6 = "SELECT salary FROM employee WHERE emp_id = '{}'".format(searchbox)
     cursor.execute(query6)
-    salary = cursor.fetchall()
+    salary = cursor.fetchone()
 
     return render_template('EditEmp.html',first_name = first_name, last_name = last_name,pri_skill = pri_skill
     ,location = location, email = email,salary = salary)
