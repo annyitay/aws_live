@@ -62,8 +62,7 @@ def RetrieveEmp():
     query = "SELECT * FROM employee WHERE emp_id = '{}'".format(searchbox)
     cursor.execute(query)
     result = cursor.fetchall()
-    
-    return jsonify(result)
+    return render_template('EditEmp.html', jsonify(result))
 
 @app.route("/addEmp", methods=['POST'])
 def AddEmp():
