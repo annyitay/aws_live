@@ -31,19 +31,19 @@ def about():
     return render_template('www.intellipaat.com')
 
 
-@app.route("/searchemp", methods=['POST','GET'])
+@app.route("/searchemp", methods=['GET', 'POST'])
 def search():
     return render_template('SearchEmp.html')
 
-@app.route("/addempdata", methods=['POST','GET'])
+@app.route("/addempdata", methods=['GET', 'POST'])
 def addEmpdata():
     return render_template('AddEmp.html')
 
-@app.route("/editemp", methods=['POST','GET'])
+@app.route("/editemp", methods=['GET', 'POST'])
 def editEmp():
     return render_template('EditEmp.html')
 
-@app.route("/deleteemp", methods=['POST','GET'])
+@app.route("/deleteemp", methods=['GET', 'POST'])
 def deleteEmp():
     return render_template('DeleteEmp.html')
 
