@@ -59,7 +59,7 @@ def EditEmp():
 def RetrieveEmp():
     searchbox = request.form.get("emp_id")
     cursor = db_conn.cursor()
-    query = "SELECT * FROM EMPLOYEE WHERE emp_id == '{}'".format(searchbox)
+    query = "SELECT * FROM EMPLOYEE WHERE emp_id = '{}'".format(searchbox)
     cursor.execute(query)
     result = cursor.fetchall()
     return jsonify(result)
