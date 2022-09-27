@@ -56,7 +56,7 @@ def AddEmp():
     pri_skill = request.form['pri_skill']
     email = request.form['email']
     salary = request.form['salary']
-    password = request.form['password']
+    password = request.form['pass']
     location = request.form['location']
     emp_image_file = request.files['emp_image_file']
 
