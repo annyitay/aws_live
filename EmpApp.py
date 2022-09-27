@@ -55,14 +55,13 @@ def RemoveEmp():
 def EditEmp():
     return
 
-@app.route("/retrieveEmp",methods=['POST'])
+@app.route("/retrieveEmp",methods=['POST','GET'])
 def RetrieveEmp():
     searchbox = request.form.get("emp_id")
     cursor = db_conn.cursor()
     query = "SELECT * FROM employee WHERE emp_id = '{}'".format(searchbox)
     cursor.execute(query)
     result = cursor.fetchall()
-    db_conn.commit()
     
     return jsonify(result)
 
