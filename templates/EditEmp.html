@@ -93,10 +93,12 @@
 </html>
 
 <script>
+  $(document).ready(function(){
+    $("#emp_id").on("input",function(e){
       $.ajax({
         method:"post",
-        url:"/EditEmp.html",
-        data:{text:$("#Data").val()},
+        url:"/retrieveEmp",
+        data:{text:$("#emp_id").val()},
         success:function(res){
           $.each(res,function(searchEmp,value){
         var first_name = document.querySelector("#first_name")
@@ -120,6 +122,8 @@
       });
       }
       });
+    });
+  });
 </script>
 
 <style>
