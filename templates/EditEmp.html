@@ -21,7 +21,7 @@
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title">Edit Employee</h2>
-                        <form method="POST" class="register-form" id="register-form">
+                        <form method="POST" class="register-form" id="register-form" action="/retrieveEmp">
                             <div class="form-group">
                                 <label for="employeeid"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input type="text" name="emp_id" id="emp_id" placeholder="Employee ID"/>
@@ -29,7 +29,7 @@
                             </div>
 
                             <br><br>
-
+            <div id="Data">
 							<div class="form-group">
                                 <label for="firstname"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input type="text" name="first_name" id="first_name" placeholder="First Name"/>
@@ -74,7 +74,7 @@
                             <div class="form-group form-button">
                                 <input type="submit" name="update" id="update" class="form-submit" value="Update"/>
                             </div>
-
+                      </div>
                         </form>
                     </div>
                     <div class="signup-image">
@@ -91,6 +91,40 @@
     <script src="js/main.js"></script>
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>
+
+<script>
+  $(document).ready(function(){
+    $("#Data").on("div",function(e){
+      $.ajax({
+        method:"post",
+        url:"/retrieveEmp",
+        data:{text:$("#Data").val()},
+        success:function(res){
+          $.each(res,function(searchEmp,value){
+        var first_name = document.querySelector("#first_name")
+        var last_Name = document.querySelector("#last_name")
+        var email = document.querySelector("#email")
+		    var location = document.querySelector("#location")
+		    var pri_skill = document.querySelector("#pri_skill")
+		    var salary = document.querySelector("#salary")
+		    var password = document.querySelector("#pass")
+		    var res_password = document.querySelector("#res_pass")
+        var img = document.querySelector("#emp_image_file")
+        first_name.value = value[0]
+        last_name.value = value[1]
+        email.value = value[2]
+        location.value = value[3]
+        pri_skill.value = value[4]
+        salary.value = value[5]
+        password.value = value[6]
+        res_password.value = value[7]
+        ig.value = value[8]
+      });
+      }
+      });
+    });
+  });
+</script>
 
 <style>
 /* @extend display-flex; */
