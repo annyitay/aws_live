@@ -53,7 +53,13 @@ def deleteEmp():
 
 @app.route("/removeEmp",methods=['POST'])
 def RemoveEmp():
-    return 
+    emp_id = request.form.get("emp_ids")
+    remove_sql = "Delete from employee where emp_id = %s"
+    cursor = db_conn.cursor()
+    cursor.execute(remove_sql, (emp_id))
+    db_conn.commit()
+
+    return render_template("EmpPanel.html")
 
 @app.route("/editEmp",methods=['POST'])
 def EditEmp():
