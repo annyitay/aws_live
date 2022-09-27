@@ -57,7 +57,7 @@ def EditEmp():
 
 @app.route("/retrieveEmp",methods=['POST'])
 def RetrieveEmp():
-    searchbox = request.form.get("text")
+    searchbox = request.form.get("emp_id")
     cursor = db_conn.cursor()
     query = "SELECT * FROM EMPLOYEE WHERE emp_id LIKE '%{}%".format(searchbox)
     cursor.execute(query)
