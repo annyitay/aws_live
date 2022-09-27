@@ -36,11 +36,15 @@ def AddEmp():
     emp_id = request.form['emp_id']
     first_name = request.form['first_name']
     last_name = request.form['last_name']
+    email = request.from['email']
+    salary = request.from['salary']
     pri_skill = request.form['pri_skill']
     location = request.form['location']
+    pass = request.from['pass']
+    re_pass = request.from['re_pass']
     emp_image_file = request.files['emp_image_file']
 
-    insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s)"
+    insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
     cursor = db_conn.cursor()
 
     if emp_image_file.filename == "":
