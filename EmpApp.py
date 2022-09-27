@@ -71,7 +71,7 @@ def EditEmp():
     cursor.execute(update_sql, (f_name, last_name, pri_skill, location, email ,salary,emp_id))
     db_conn.commit()
 
-    return
+    return render_template('EmpPanel.html')
 
 @app.route("/retrieveEmp",methods=['POST','GET'])
 def RetrieveEmp():
