@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request ,jsonify
 from pymysql import connections
 import os
 import boto3
@@ -47,6 +47,22 @@ def editEmp():
 def deleteEmp():
     return render_template('DeleteEmp.html')
 
+@app.route("/removeEmp",methods=['POST'])
+def RemoveEmp():
+    return 
+
+@app.route("/editEmp",methods=['POST'])
+def EditEmp():
+    return
+
+@app.route("/retrieveEmp",methods=['POST'])
+def RetrieveEmp():
+    searchbox = request.form.get("text")
+    cursor = db_conn.cursor()
+    query = "SELECT * FROM EMPLOYEE WHERE emp_id LIKE '%{}%".format(searchbox)
+    cursor.execute(query)
+    result = cursor.fetchall()
+    return jsonify(result)
 
 @app.route("/addEmp", methods=['POST'])
 def AddEmp():
