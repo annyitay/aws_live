@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request ,jsonify
+from flask import  Flask, render_template, request, jsonify, redirect, url_for
 from pymysql import connections
 import os
 import boto3
@@ -59,10 +59,32 @@ def EditEmp():
 def RetrieveEmp():
     searchbox = request.form.get("emp_id")
     cursor = db_conn.cursor()
-    query = "SELECT * FROM employee WHERE emp_id = '{}'".format(searchbox)
+    query = "SELECT first_name FROM employee WHERE emp_id = '{}'".format(searchbox)
     cursor.execute(query)
-    result = cursor.fetchall()
-    return jsonify(result)
+    first_name = cursor.fetchall()
+
+    query2 = "SELECT last_name FROM employee WHERE emp_id = '{}'".format(searchbox)
+    cursor.execute(query2)
+    last_name = cursor.fetchall()
+
+    query3 = "SELECT pri_skill FROM employee WHERE emp_id = '{}'".format(searchbox)
+    cursor.execute(query3)
+    pri_skill = cursor.fetchall()
+
+    query4 = "SELECT location FROM employee WHERE emp_id = '{}'".format(searchbox)
+    cursor.execute(query4)
+    location = cursor.fetchall()
+
+    query5 = "SELECT email FROM employee WHERE emp_id = '{}'".format(searchbox)
+    cursor.execute(query5)
+    email = cursor.fetchall()
+
+    query6 = "SELECT salary FROM employee WHERE emp_id = '{}'".format(searchbox)
+    cursor.execute(query6)
+    salary = cursor.fetchall()
+
+    return render_template('EditEmp.html',first_name = first_name, last_name = last_name,pri_skill = pri_skill
+    ,location = location, email = email,salary = salary)
 
 @app.route("/addEmp", methods=['POST'])
 def AddEmp():
