@@ -63,7 +63,7 @@ def EditEmp():
     location = request.form.get("location")
     email = request.form.get("email")
     salary = request.form.get("salary")
-    emp_id = request.form.get("emp_id")
+    emp_id = request.form.get("emp_ids")
 
     update_sql = "Update employee Set first_name = %s, last_name = %s, pri_skill = %s, location = %s,email = %s,salary = %s where emp_id = %s"
     cursor = db_conn.cursor()
